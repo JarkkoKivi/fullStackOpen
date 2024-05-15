@@ -1,7 +1,7 @@
 ```mermaid
 sequenceDiagram
   
-  note right of Asiakas: asiakas lataa sivun
+  note left of Asiakas: asiakas lataa sivun
   Asiakas->>Palvelin: Http GET request url...
   activate Palvelin
   Palvelin-->>Asiakas: Http response header (HTML document)
@@ -29,5 +29,17 @@ sequenceDiagram
   end
   Palvelin-->>Asiakas: Http response header
   deactivate Palvelin
-  note right of Asiakas: sivu uudelleen latautuu ja näyttää juuri tallennetun muistiinpanon
+  Asiakas->>Palvelin: GET pyyntö css tyylitiedosto url...
+  activate Palvelin
+  Palvelin-->>Asiakas: CSS tiedosto
+  deactivate Palvelin
+  Asiakas->>Palvelin: GET pyyntö javascript tiedosto url...
+  activate Palvelin
+  Palvelin-->>Asiakas: javascript tiedosto
+  deactivate Palvelin
+  Asiakas->>Palvelin: Javascript suorittaa GET pyynnön muistiinpanotiedostolle
+  activate Palvelin
+  Palvelin-->>Asiakas: Palauttaa JSON objektin
+  deactivate Palvelin
+  note left of Asiakas: sivu uudelleen latautuu ja json objekti sisältää käyttäjän tallentaman tiedon
   ```
