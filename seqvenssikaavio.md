@@ -27,7 +27,7 @@ sequenceDiagram
   loop redirect and save new note
     Palvelin->>Palvelin: suorittaa tallennusmetodin ja uudelleen ohjauksen
   end
-  Palvelin-->>Asiakas: Http response header
+  Palvelin-->>Asiakas: Http response header (HTML document)
   deactivate Palvelin
   Asiakas->>Palvelin: GET pyyntö css tyylitiedosto url...
   activate Palvelin
@@ -41,5 +41,5 @@ sequenceDiagram
   activate Palvelin
   Palvelin-->>Asiakas: Palauttaa JSON objektin
   deactivate Palvelin
-  note left of Asiakas: sivu uudelleen latautuu ja json objekti sisältää käyttäjän tallentaman tiedon
+  note left of Asiakas: sivu uudelleen latautuu<br/>ja json objekti sisältää myös<br/> käyttäjän syöttämän tiedon
   ```
